@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Motari Samwel | Web Developer & AI Specialist</title>
+
+    <!-- ✅ SEO Meta Tags -->
+    <meta name="description"
+        content="Motari Samwel is a Computer Science graduate specializing in Web Development, Graphic Design, and AI/ML solutions. Explore projects, services, and contact today." />
+    <meta name="keywords"
+        content="Motari Samwel, Web Developer, Graphic Designer, AI Engineer, Portfolio, Kenya Developer, Machine Learning, UI/UX Designer, Frontend Developer" />
+    <meta name="author" content="Motari Samwel" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- ✅ Open Graph / Facebook -->
+    <meta property="og:title" content="Motari Samwel | Web Developer & AI Specialist" />
+    <meta property="og:description"
+        content="Explore Motari Samwel’s portfolio featuring work in web development, graphics design, and artificial intelligence." />
+    <meta property="og:image" content="https://yourdomain.com/assets/preview.png" />
+    <meta property="og:url" content="https://yourdomain.com" />
+    <meta property="og:type" content="website" />
+
+    <!-- ✅ Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Motari Samwel | Web Developer & AI Specialist" />
+    <meta name="twitter:description" content="Explore projects and services in web development, design, and AI." />
+    <meta name="twitter:image" content="https://yourdomain.com/assets/preview.png" />
+
+    <!-- ✅ Favicon -->
+    <link rel="icon" type="image/png" href="assets/icon.jpg" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap");
+
+        :root {
+            --primary: #2e7d32;
+            --primary-light: #4caf50;
+            --primary-dark: #1b5e20;
+            --secondary: #8bc34a;
+            --accent: #689f38;
+            --light: #f1f8e9;
+            --dark: #1a1a1a;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background-color: #f9fafb;
+            color: var(--dark);
+        }
+
+        .heading-font {
+            font-family: "Playfair Display", serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg,
+                    var(--primary) 0%,
+                    var(--secondary) 100%);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(46, 125, 50, 0.1),
+                0 4px 6px -5px rgba(46, 125, 50, 0.05);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link:after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        .skill-pill {
+            transition: all 0.3s ease;
+        }
+
+        .skill-pill:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .project-card {
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+        }
+
+        .project-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 10px 15px -3px rgba(46, 125, 50, 0.1);
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .timeline-item:not(:last-child):after {
+            content: "";
+            position: absolute;
+            left: 7px;
+            top: 24px;
+            height: 100%;
+            width: 2px;
+            background-color: var(--primary-light);
+        }
+
+        /* Floating contact button styles */
+        .floating-contact {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
+        }
+
+        .contact-main-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .contact-main-btn:hover {
+            background-color: var(--primary-dark);
+            transform: scale(1.1);
+        }
+
+        .contact-main-btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .contact-main-btn.active i {
+            transform: rotate(135deg);
+        }
+
+        .contact-options {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            transform: translateY(20px);
+        }
+
+        .contact-options.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .contact-option {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-option:hover {
+            transform: translateY(-3px);
+        }
+
+        .contact-option.phone {
+            background-color: #4caf50;
+        }
+
+        .contact-option.whatsapp {
+            background-color: #25d366;
+        }
+
+        /* Mobile menu styles */
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            right: 0;
+            background-color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            z-index: 50;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 12px 20px;
+            color: var(--dark);
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .mobile-menu a:hover {
+            background-color: #f9fafb;
+            color: var(--primary);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <span class="text-xl font-bold text-gray-900 heading-font">Motari Samwel Z.</span>
+                    </div>
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="#home"
+                            class="nav-link border-green-700 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Home</a>
+                        <a href="#work"
+                            class="nav-link border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Work</a>
+                        <a href="#about"
+                            class="nav-link border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">About</a>
+                        <a href="#skills"
+                            class="nav-link border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Skills</a>
+                        <a href="#contact"
+                            class="nav-link border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="hidden sm:ml-6 sm:flex sm:items-center">
+                    <!-- Button -->
+                    <button onclick="document.getElementById('cv-alert').classList.remove('hidden')"
+                        class="btn-primary px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                        Download CV
+                    </button>
+
+                    <!-- Danger Alert Card -->
+                    <div id="cv-alert"
+                        class="hidden mt-4 max-w-md mx-auto bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+                        role="alert">
+                        <strong class="font-bold">⚠ CV Not Uploaded!</strong>
+                        <span class="block sm:inline">Please try again later or contact the site owner.</span>
+                        <span onclick="this.parentElement.classList.add('hidden')"
+                            class="absolute top-0 bottom-0 right-0 px-4 py-3 cursor-pointer">
+                            <svg class="fill-current h-6 w-6 text-red-500" role="button"
+                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                <title>Close</title>
+                                <path
+                                    d="M14.348 5.652a1 1 0 00-1.414-1.414L10 7.172 7.066 4.238a1 1 0 00-1.414 1.414L8.586 8.586 5.652 11.52a1 1 0 001.414 1.414L10 9.828l2.934 2.934a1 1 0 001.414-1.414L11.414 8.586l2.934-2.934z" />
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+                <div class="-mr-2 flex items-center sm:hidden">
+                    <!-- Mobile menu button -->
+                    <button id="mobile-menu-button" type="button"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500"
+                        aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu, show/hide based on menu state -->
+        <div id="mobile-menu" class="mobile-menu sm:hidden">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="#home"
+                    class="block px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-50 hover:text-green-700">Home</a>
+                <a href="#work"
+                    class="block px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-green-700">Work</a>
+                <a href="#about"
+                    class="block px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-green-700">About</a>
+                <a href="#skills"
+                    class="block px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-green-700">Skills</a>
+                <a href="#contact"
+                    class="block px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-green-700">Contact</a>
+                <div class="mt-4 px-3">
+                    <button
+                        class="btn-primary w-full flex items-center justify-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white">
+                        Download CV
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative overflow-hidden bg-green-50 dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto">
+            <div class="relative z-10 pb-8 sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
+                <main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+                    <div class="sm:text-center lg:text-left">
+                        <h1
+                            class="text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white sm:text-5xl md:text-6xl heading-font">
+                            <span class="block">Hello, I'm</span>
+                            <span class="block text-green-700 dark:text-green-400">Motari Samwel.</span>
+                        </h1>
+                        <p
+                            class="mt-3 text-base text-gray-600 dark:text-gray-300 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                            <span id="typed-text" class="font-medium"></span>
+                        </p>
+                        <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+                            <div class="rounded-md shadow">
+                                <a href="#work"
+                                    class="btn-primary w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md md:py-4 md:text-lg md:px-10">
+                                    View My Work
+                                </a>
+                            </div>
+                            <div class="mt-3 sm:mt-0 sm:ml-3">
+                                <a href="#contact"
+                                    class="btn-outline w-full flex items-center justify-center px-8 py-3 text-base font-medium rounded-md md:py-4 md:text-lg md:px-10">
+                                    Contact Me
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <!-- Hero Illustration -->
+        <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+            <img class="h-56 w-full object-contain sm:h-72 md:h-96 lg:w-full lg:h-full animate-float"
+                src="assets/svg/undraw_space-exploration_dhu1.svg" alt="Designer illustration" />
+        </div>
+
+    </section>
+
+    <!-- Typed.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+    <!-- Typing Effect Initialization -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            new Typed("#typed-text", {
+                strings: [
+                    "A passionate UI/UX Designer.",
+                    "A Frontend Developer.",
+                    "A Machine Learning Engineer.",
+                    "An AI Enthusiast.",
+                    "A Problem Solver."
+                ],
+                typeSpeed: 50,
+                backSpeed: 30,
+                backDelay: 1500,
+                loop: true,
+                smartBackspace: true,
+                showCursor: true,
+                cursorChar: "|",
+            });
+        });
+    </script>
+
+
+  <!-- Work Section -->
+<section id="work" class="py-12 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h2 class="text-base text-green-600 font-semibold tracking-wide uppercase">Portfolio</h2>
+      <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl heading-font">
+        Selected Projects
+      </p>
+      <p class="mt-4 max-w-2xl text-xl text-gray-600 mx-auto">
+        Here are some of my favorite projects I've worked on recently.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+
+      <!-- Project: GreenShop -->
+      <div class="project-card rounded-lg overflow-hidden bg-white">
+        <div class="h-48 bg-green-50 flex items-center justify-center">
+          <i class="fas fa-shopping-cart text-green-700 text-5xl animate-float"></i>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900">GreenShop E-commerce</h3>
+          <p class="mt-2 text-gray-600">
+            A sustainable e-commerce platform with custom UI components and seamless checkout.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="skill-pill px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">React</span>
+            <span class="skill-pill px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">Node.js</span>
+            <span class="skill-pill px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">MongoDB</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project: KidsWorld -->
+      <div class="project-card rounded-lg overflow-hidden bg-white">
+        <div class="h-48 bg-green-50 flex items-center justify-center">
+          <i class="fas fa-child text-green-700 text-5xl animate-float"></i>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900">KidsWorld eCommerce</h3>
+          <p class="mt-2 text-gray-600">
+            Full-featured eCommerce site for kids' products using Django, Tailwind CSS, and Google OAuth.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="skill-pill px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">Django</span>
+            <span class="skill-pill px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">Tailwind CSS</span>
+            <span class="skill-pill px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">Google OAuth</span>
+          </div>
+          <div class="mt-6">
+            <a href="https://github.com/sammotari/kidsworld-ecommerce" target="_blank"
+              class="text-green-700 font-medium hover:text-green-800 inline-flex items-center">
+              View on GitHub
+              <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project: MiniTweetGPT -->
+      <div class="project-card rounded-lg overflow-hidden bg-white">
+        <div class="h-48 bg-green-50 flex items-center justify-center">
+          <i class="fas fa-brain text-green-700 text-5xl animate-float"></i>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900">MiniTweetGPT</h3>
+          <p class="mt-2 text-gray-600">
+            Lightweight GPT-like model trained on tweet datasets using PyTorch and Transformers.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="skill-pill px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">PyTorch</span>
+            <span class="skill-pill px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">NLP</span>
+            <span class="skill-pill px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">AI/ML</span>
+          </div>
+          <div class="mt-6">
+            <a href="https://github.com/sammotari/MiniTweetGPT-A-small-GPT-like-model-for-tweets-" target="_blank"
+              class="text-green-700 font-medium hover:text-green-800 inline-flex items-center">
+              View on GitHub
+              <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project: Fee Payment -->
+      <div class="project-card rounded-lg overflow-hidden bg-white">
+        <div class="h-48 bg-green-50 flex items-center justify-center">
+          <i class="fas fa-wallet text-green-700 text-5xl animate-float"></i>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900">Fee Payment System</h3>
+          <p class="mt-2 text-gray-600">
+            React Native + Django mobile platform for school fee registration, tracking, and payment confirmation.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="skill-pill px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">React Native</span>
+            <span class="skill-pill px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">Django</span>
+            <span class="skill-pill px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">PostgreSQL</span>
+          </div>
+          <div class="mt-6">
+            <a href="https://github.com/sammotari/fee_payment_system_backend_django/tree/main" target="_blank"
+              class="text-green-700 font-medium hover:text-green-800 inline-flex items-center">
+              View on GitHub
+              <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project: Rice Mill -->
+      <div class="project-card rounded-lg overflow-hidden bg-white">
+        <div class="h-48 bg-green-50 flex items-center justify-center">
+          <i class="fas fa-industry text-green-700 text-5xl animate-float"></i>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900">Rice Mill Management</h3>
+          <p class="mt-2 text-gray-600">
+            Web-based system for inventory, payments, and reporting in rice milling. Features role-based access.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="skill-pill px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">Django</span>
+            <span class="skill-pill px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">PostgreSQL</span>
+            <span class="skill-pill px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">Dashboards</span>
+          </div>
+          <div class="mt-6">
+            <a href="https://github.com/sammotari/rmad_system" target="_blank"
+              class="text-green-700 font-medium hover:text-green-800 inline-flex items-center">
+              View on GitHub
+              <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project: Mindful App -->
+      <div class="project-card rounded-lg overflow-hidden bg-white">
+        <div class="h-48 bg-green-50 flex items-center justify-center">
+          <i class="fas fa-spa text-green-700 text-5xl animate-float"></i>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900">Mindful App</h3>
+          <p class="mt-2 text-gray-600">
+            A calming meditation and mindfulness app built with Flutter and Firebase, providing audio & tracking features.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span class="skill-pill px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">Flutter</span>
+            <span class="skill-pill px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">Dart</span>
+            <span class="skill-pill px-3 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">Firebase</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="mt-12 text-center">
+      <a href="portfolio.html" class="btn-outline inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md">
+        View Full Portfolio
+      </a>
+    </div>
+  </div>
+</section>
+
+    <!-- About Section -->
+    <section id="about" class="py-12 bg-green-50 dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+                <!-- Left Column -->
+                <div class="lg:col-span-5">
+                    <h2 class="text-base text-green-600 font-semibold tracking-wide uppercase">
+                        About Me
+                    </h2>
+                    <p
+                        class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl heading-font">
+                        My Journey
+                    </p>
+                    <p class="mt-4 text-lg text-gray-600 dark:text-gray-300">
+                        I’m Samwel Motari, a passionate Computer Science graduate with a
+                        strong background in web development, AI/ML, and graphics design.
+                        I build modern digital solutions that combine creativity and
+                        performance.
+                    </p>
+                    <div class="mt-6">
+                        <a href="assets/cv/Samwel_Motari_CV.pdf"
+                            class="btn-primary inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md">
+                            Download Resume
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="mt-10 lg:mt-0 lg:col-span-7 space-y-10">
+                    <!-- Education -->
+                    <div class="relative pl-8">
+                        <div class="absolute left-0 top-1 w-4 h-4 rounded-full bg-green-600 border-4 border-green-100">
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white">
+                            Bachelor of Science in Computer Science
+                        </h4>
+                        <p class="text-green-700 dark:text-green-400 font-medium">
+                            University of Kabianga • 2020 – 2024
+                        </p>
+                        <p class="mt-2 text-gray-600 dark:text-gray-300">
+                            <!-- Second Upper Class Honour -->
+                        </p>
+                    </div>
+
+                    <!-- Technical Skills -->
+                    <div class="relative pl-8">
+                        <div class="absolute left-0 top-1 w-4 h-4 rounded-full bg-green-600 border-4 border-green-100">
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white">
+                            Technical Skills
+                        </h4>
+                        <ul class="list-disc list-inside mt-2 space-y-2 text-gray-600 dark:text-gray-300">
+                            <li>
+                                <strong>Python & Frameworks:</strong> Django, Flask,
+                                TensorFlow, Scikit-Learn, Pandas, NumPy
+                            </li>
+                            <li>
+                                <strong>JavaScript Technologies:</strong> React, Vue.js,
+                                Node.js, Express, HTML, CSS
+                            </li>
+                            <li><strong>PHP & Tools:</strong> Laravel, WordPress, MySQL</li>
+                            <li><strong>Database Management:</strong> SQL & NoSQL</li>
+                            <li><strong>Version Control:</strong> Git & GitHub</li>
+                            <li><strong>UI/UX Tools:</strong> Figma (Basic)</li>
+                            <li>
+                                <strong>Networking:</strong> TCP/IP, DNS, DHCP, LAN/WAN,
+                                security, diagnostics
+                            </li>
+                            <li><strong>Tools:</strong> Visual Studio Code, Git, Figma</li>
+                        </ul>
+                    </div>
+
+                    <!-- AI & Machine Learning -->
+                    <div class="relative pl-8">
+                        <div class="absolute left-0 top-1 w-4 h-4 rounded-full bg-green-600 border-4 border-green-100">
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white">
+                            AI & Machine Learning
+                        </h4>
+                        <p class="mt-2 text-gray-600 dark:text-gray-300">
+                            Proficient in building predictive models, recommendation
+                            systems, and data analysis tools using Python. Experienced with
+                            TensorFlow, Scikit-Learn, and deployment of ML models.
+                        </p>
+                    </div>
+
+                    <!-- Soft Skills -->
+                    <div class="relative pl-8">
+                        <div class="absolute left-0 top-1 w-4 h-4 rounded-full bg-green-600 border-4 border-green-100">
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white">
+                            Soft Skills
+                        </h4>
+                        <ul class="list-disc list-inside mt-2 space-y-2 text-gray-600 dark:text-gray-300">
+                            <li>Strong problem-solving and analytical thinking</li>
+                            <li>Excellent communication and teamwork abilities</li>
+                            <li>Detail-oriented and focused on quality delivery</li>
+                            <li>Fast learner, adaptable to new tech</li>
+                            <li>Organized, results-oriented, and proactive</li>
+                        </ul>
+                    </div>
+
+                    <!-- Experience -->
+                    <div class="relative pl-8">
+                        <div class="absolute left-0 top-1 w-4 h-4 rounded-full bg-green-600 border-4 border-green-100">
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white">
+                            ICT Support Assistant (Intern)
+                        </h4>
+                        <p class="text-green-700 dark:text-green-400 font-medium">
+                            Kendege Technical & Vocational College • May 2023 – July 2023
+                        </p>
+                        <ul class="list-disc list-inside mt-2 space-y-2 text-gray-600 dark:text-gray-300">
+                            <li>Delivered hardware, software, and network support</li>
+                            <li>Trained staff and students on basic IT practices</li>
+                            <li>Installed and configured new network systems</li>
+                            <li>
+                                Maintained and repaired hardware devices including PCs and
+                                printers
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-white dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-base text-green-600 font-semibold tracking-wide uppercase" data-aos="fade-up">
+                    Skills
+                </h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl heading-font"
+                    data-aos="fade-up">
+                    My Technical Expertise
+                </p>
+                <p class="mt-4 max-w-2xl text-xl text-gray-600 dark:text-gray-300 mx-auto" data-aos="fade-up">
+                    A multidisciplinary skill set spanning multiple domains.
+                </p>
+            </div>
+
+            <div class="mt-12 grid gap-8 md:grid-cols-3">
+                <!-- Web Development Skills -->
+                <div class="p-6 bg-green-50 dark:bg-gray-800 rounded-lg shadow-md" data-aos="fade-up"
+                    data-aos-delay="100">
+                    <div
+                        class="w-14 h-14 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center text-green-600 dark:text-green-300 mb-4">
+                        <i class="fas fa-code text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white">
+                        Web Development
+                    </h3>
+                    <ul class="mt-4 space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span class="text-gray-600 dark:text-gray-300">React & Next.js</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span class="text-gray-600 dark:text-gray-300">Django & Flask</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span class="text-gray-600 dark:text-gray-300">RESTful APIs</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span class="text-gray-600 dark:text-gray-300">Tailwind CSS</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span class="text-gray-600 dark:text-gray-300">PostgreSQL/MongoDB</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span class="text-gray-600 dark:text-gray-300">Docker & CI/CD</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Design Skills -->
+                <div class="p-6 bg-green-50 dark:bg-gray-800 rounded-lg shadow-md" data-aos="fade-up"
+                    data-aos-delay="200">
+                    <div
+                        class="w-14 h-14 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center text-green-600 dark:text-green-300 mb-4">
+                        <i class="fas fa-paint-brush text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white">
+                        Design
+                    </h3>
+                    <ul class="mt-4 space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span class="text-gray-600 dark:text-gray-300">UI/UX Design</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span class="text-gray-600 dark:text-gray-300">Figma & Adobe XD</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span class="text-gray-600 dark:text-gray-300">Brand Identity</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span class="text-gray-600 dark:text-gray-300">User Research</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span class="text-gray-600 dark:text-gray-300">Prototyping</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span class="text-gray-600 dark:text-gray-300">Design Systems</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- AI & Machine Learning Skills -->
+                <div class="p-6 bg-green-50 dark:bg-gray-800 rounded-lg shadow-md" data-aos="fade-up"
+                    data-aos-delay="300">
+                    <div
+                        class="w-14 h-14 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center text-green-600 dark:text-green-300 mb-4">
+                        <i class="fas fa-brain text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white">
+                        AI & Machine Learning
+                    </h3>
+                    <ul class="mt-4 space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span class="text-gray-600 dark:text-gray-300">Python for Data Science</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span class="text-gray-600 dark:text-gray-300">TensorFlow & PyTorch</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span class="text-gray-600 dark:text-gray-300">Neural Networks</span>
+                        </li>
+
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span class="text-gray-600 dark:text-gray-300">NLP (Transformers, BERT)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                            <span class="text-gray-600 dark:text-gray-300">ML Model Deployment</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Additional Technical Skills -->
+            <div class="mt-12">
+                <h3 class="text-2xl font-bold text-center text-gray-900 dark:text-white mb-6" data-aos="fade-up">
+                    Additional Technical Proficiencies
+                </h3>
+
+                <div class="flex flex-wrap justify-center gap-3" data-aos="fade-up">
+                    <!-- Databases -->
+                    <span
+                        class="skill-pill px-4 py-2 rounded-full text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100">
+                        <i class="fas fa-database mr-2"></i> SQL & NoSQL Databases
+                    </span>
+
+                    <!-- Git -->
+                    <span
+                        class="skill-pill px-4 py-2 rounded-full text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100">
+                        <i class="fab fa-git-alt mr-2"></i> Git Version Control
+                    </span>
+
+                    <!-- Cloud -->
+                    <span
+                        class="skill-pill px-4 py-2 rounded-full text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100">
+                        <i class="fas fa-server mr-2"></i> Cloud Computing (AWS, GCP)
+                    </span>
+
+                    <!-- Data Visualization -->
+                    <span
+                        class="skill-pill px-4 py-2 rounded-full text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100">
+                        <i class="fas fa-chart-line mr-2"></i> Data Visualization &
+                        Storytelling
+                    </span>
+
+                    <!-- Data Pipelines -->
+                    <span
+                        class="skill-pill px-4 py-2 rounded-full text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100">
+                        <i class="fas fa-project-diagram mr-2"></i> Data Pipeline
+                        Architecture
+                    </span>
+
+                    <!-- Reinforcement Learning -->
+                    <span
+                        class="skill-pill px-4 py-2 rounded-full text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100">
+                        <i class="fas fa-robot mr-2"></i> Reinforcement Learning
+                    </span>
+
+                    <!-- Statistical Analysis -->
+                    <span
+                        class="skill-pill px-4 py-2 rounded-full text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100">
+                        <i class="fas fa-percentage mr-2"></i> Inferential & Descriptive
+                        Statistics
+                    </span>
+
+                    <!-- Hypothesis Testing -->
+                    <span
+                        class="skill-pill px-4 py-2 rounded-full text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100">
+                        <i class="fas fa-flask mr-2"></i> Hypothesis Testing & A/B
+                        Experiments
+                    </span>
+
+                    <!-- Probability Theory -->
+                    <span
+                        class="skill-pill px-4 py-2 rounded-full text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100">
+                        <i class="fas fa-dice mr-2"></i> Probability Theory &
+                        Distributions
+                    </span>
+
+                    <!-- Regression Modeling -->
+                    <span
+                        class="skill-pill px-4 py-2 rounded-full text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100">
+                        <i class="fas fa-sliders-h mr-2"></i> Regression Analysis (Linear
+                        & Logistic)
+                    </span>
+
+                    <!-- Time Series Analysis -->
+                    <span
+                        class="skill-pill px-4 py-2 rounded-full text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-100">
+                        <i class="fas fa-clock mr-2"></i> Time Series Modeling &
+                        Forecasting
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-12 gradient-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-base text-green-100 font-semibold tracking-wide uppercase">
+                    Testimonials
+                </h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-white sm:text-4xl heading-font">
+                    What Clients Say
+                </p>
+            </div>
+
+            <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                <!-- Testimonial 1 -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <div class="flex items-center">
+                        <div
+                            class="w-12 h-12 rounded-full flex items-center justify-center bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-100 text-xl">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-gray-900 dark:text-white">Grace Achieng</h4>
+                            <p class="text-green-600 dark:text-green-400">CEO, Nairobi Code Studio</p>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-gray-600 dark:text-gray-300 italic">
+                        “Samwel’s innovative web solutions elevated our online brand. His attention to performance and
+                        design is unmatched.”
+                    </p>
+                    <div class="mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <div class="flex items-center">
+                        <div
+                            class="w-12 h-12 rounded-full flex items-center justify-center bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-100 text-xl">
+                            <i class="fas fa-user-cog"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-gray-900 dark:text-white">Kevin Otieno</h4>
+                            <p class="text-green-600 dark:text-green-400">CTO, M-Pay Systems</p>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-gray-600 dark:text-gray-300 italic">
+                        “His grasp of AI tools and backend development allowed us to build a smarter, more efficient
+                        platform.”
+                    </p>
+                    <div class="mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <div class="flex items-center">
+                        <div
+                            class="w-12 h-12 rounded-full flex items-center justify-center bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-100 text-xl">
+                            <i class="fas fa-user-edit"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-gray-900 dark:text-white">Janet Mwikali</h4>
+                            <p class="text-green-600 dark:text-green-400">Brand Designer, Nyota Agency</p>
+                        </div>
+                    </div>
+                    <p class="mt-4 text-gray-600 dark:text-gray-300 italic">
+                        “The UI/UX designs delivered by Samwel were polished, modern, and perfectly aligned with our
+                        vision.”
+                    </p>
+                    <div class="mt-4 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-8">
+                <div>
+                    <h2 class="text-base text-green-600 font-semibold tracking-wide uppercase">
+                        Get In Touch
+                    </h2>
+                    <p
+                        class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl heading-font">
+                        Let's Work Together
+                    </p>
+                    <p class="mt-4 text-lg text-gray-600">
+                        Have a project in mind or want to discuss potential opportunities?
+                        I'd love to hear from you.
+                    </p>
+                    <div class="mt-8">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-green-100 rounded-md p-3">
+                                <i class="fas fa-envelope text-green-700"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium text-gray-900">Email</h3>
+                                <p class="mt-1 text-gray-600">sammotarih@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="mt-6 flex items-start">
+                            <div class="flex-shrink-0 bg-green-100 rounded-md p-3">
+                                <i class="fas fa-map-marker-alt text-green-700"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-medium text-gray-900">Location</h3>
+                                <p class="mt-1 text-gray-600">
+                                    Kenya • Open to remote work
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8 flex space-x-6">
+                        <a href="https://x.com/mrmotari" class="text-gray-500 hover:text-green-600">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/samwelmotari" class="text-gray-500 hover:text-green-600">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-500 hover:text-green-600">
+                            <i class="fab fa-dribbble text-xl"></i>
+                        </a>
+                        <a href="https://github.com/sammotari" class="text-gray-500 hover:text-green-600">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="mt-12 lg:mt-0">
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                            <input type="text" id="name" name="name"
+                                class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-green-500 focus:border-green-500" />
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                            <input type="email" id="email" name="email"
+                                class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-green-500 focus:border-green-500" />
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                            <textarea id="message" name="message" rows="4"
+                                class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-green-500 focus:border-green-500"></textarea>
+                        </div>
+                        <div>
+                            <button type="submit"
+                                class="btn-primary w-full flex justify-center py-3 px-4 border border-transparent text-base font-medium rounded-md">
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Contact Button -->
+    <div class="floating-contact">
+        <div class="contact-options" id="contactOptions">
+            <a href="tel:+25459974363" class="contact-option phone">
+                <i class="fas fa-phone"></i>
+            </a>
+            <a href="https://wa.me/25459974363" target="_blank" class="contact-option whatsapp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+        <div class="contact-main-btn" id="contactMainBtn">
+            <i class="fas fa-comment-dots"></i>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="xl:grid xl:grid-cols-3 xl:gap-8">
+                <div class="space-y-8 xl:col-span-1">
+                    <div class="flex items-center">
+                        <span class="text-xl font-bold text-white heading-font">Motari Samwel</span>
+                    </div>
+                    <p class="text-gray-300 text-base">
+                        Creating digital experiences that are beautiful, functional, and
+                        meaningful.
+                    </p>
+                </div>
+                <div class="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
+                    <div class="md:grid md:grid-cols-2 md:gap-8">
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">
+                                Navigation
+                            </h3>
+                            <ul class="mt-4 space-y-4">
+                                <li>
+                                    <a href="#home" class="text-base text-gray-400 hover:text-white">
+                                        Home
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#work" class="text-base text-gray-400 hover:text-white">
+                                        Work
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#about" class="text-base text-gray-400 hover:text-white">
+                                        About
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#contact" class="text-base text-gray-400 hover:text-white">
+                                        Contact
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-12 md:mt-0">
+                            <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">
+                                Legal
+                            </h3>
+                            <ul class="mt-4 space-y-4">
+                                <li>
+                                    <a href="#" class="text-base text-gray-400 hover:text-white">
+                                        Privacy
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-base text-gray-400 hover:text-white">
+                                        Terms
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-800 pt-8">
+                <p class="text-base text-gray-400 text-center">
+                    &copy; <span id="year"></span> Samwel Motari. All rights reserved.
+                </p>
+            </div>
+
+            <script>
+                document.getElementById("year").textContent = new Date().getFullYear();
+            </script>
+
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle functionality
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        mobileMenuButton.addEventListener("click", function () {
+            const expanded = this.getAttribute("aria-expanded") === "true";
+            this.setAttribute("aria-expanded", !expanded);
+            mobileMenu.classList.toggle("active");
+
+            // Toggle between hamburger and close icon
+            const icon = this.querySelector("i");
+            if (expanded) {
+                icon.classList.remove("fa-times");
+                icon.classList.add("fa-bars");
+            } else {
+                icon.classList.remove("fa-bars");
+                icon.classList.add("fa-times");
+            }
+        });
+
+        // Close mobile menu when clicking on a link
+        const mobileMenuLinks = document.querySelectorAll("#mobile-menu a");
+        mobileMenuLinks.forEach((link) => {
+            link.addEventListener("click", () => {
+                mobileMenu.classList.remove("active");
+                mobileMenuButton.setAttribute("aria-expanded", "false");
+                mobileMenuButton.querySelector("i").classList.remove("fa-times");
+                mobileMenuButton.querySelector("i").classList.add("fa-bars");
+            });
+        });
+
+        // Floating contact button functionality
+        const contactMainBtn = document.getElementById("contactMainBtn");
+        const contactOptions = document.getElementById("contactOptions");
+
+        contactMainBtn.addEventListener("click", function () {
+            this.classList.toggle("active");
+            contactOptions.classList.toggle("active");
+        });
+
+        // Close contact options when clicking outside
+        document.addEventListener("click", function (event) {
+            if (
+                !contactMainBtn.contains(event.target) &&
+                !contactOptions.contains(event.target)
+            ) {
+                contactMainBtn.classList.remove("active");
+                contactOptions.classList.remove("active");
+            }
+        });
+    </script>
+</body>
+
+</html>
